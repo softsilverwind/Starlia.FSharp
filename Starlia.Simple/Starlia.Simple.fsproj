@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{643344F2-3122-42AD-95BA-14B6EFC702F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Starlia.Simple</RootNamespace>
+    <AssemblyName>Starlia.Simple</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="AssimpNet">
+      <HintPath>..\packages\AssimpNet.3.3.1\lib\net45\AssimpNet.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
+      <Package>opentk</Package>
+    </Reference>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="SimpleModel.fs" />
+    <Compile Include="SimpleLayer.fs" />
+    <Compile Include="Shaders.fs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
+  <Import Project="..\packages\AssimpNet.3.3.1\build\AssimpNet.targets" Condition="Exists('..\packages\AssimpNet.3.3.1\build\AssimpNet.targets')" />
+  <ItemGroup>
+    <ProjectReference Include="..\Starlia\Starlia.fsproj">
+      <Project>{9F969674-529E-45C3-9A1F-BF4AB721C31A}</Project>
+      <Name>Starlia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Starlia.Helpers\Starlia.Helpers.fsproj">
+      <Project>{3E778C8F-10A5-4162-9CD1-7605AF5149CC}</Project>
+      <Name>Starlia.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Protected\Protected.fsproj">
+      <Project>{24BDAEE8-2A5D-444D-A493-B5809D802910}</Project>
+      <Name>Protected</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
